@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of CustomerManagement Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version></version>
+
+    <view-entity entity-name="FindCustomerView" package-name="ofbiz"
+        title="Party Person Contact Mech View">
+        <member-entity entity-alias="PTY" entity-name="Party" />
+        <member-entity entity-alias="PTYROLE" entity-name="PartyRole" />
+        <member-entity entity-alias="PER" entity-name="Person" />
+        <member-entity entity-alias="PTYPCM" entity-name="PartyContactMech" />
+        <member-entity entity-alias="PCP" entity-name="PartyContactMechPurpose" />
+        <member-entity entity-alias="PTYCM" entity-name="ContactMech" />
+        <member-entity entity-alias="PA" entity-name="PostalAddress" />
+        <member-entity entity-alias="TN" entity-name="TelecomNumber" />
+
+
+        <alias entity-alias="PTY" name="partyId" />
+        <alias entity-alias="PTY" name="partyTypeId" />
+        <alias entity-alias="PTY" name="statusId" />
+        <alias entity-alias="PTYROLE" name="roleTypeId" />
+        <alias entity-alias="PER" name="firstName" />
+        <alias entity-alias="PER" name="middleName" />
+        <alias entity-alias="PER" name="lastName" />
+        <alias entity-alias="PCP" name="contactMechPurposeTypeId" />
+        <alias entity-alias="PTYPCM" name="contactMechId" />
+        <alias entity-alias="PTYPCM" name="fromDate" />
+        <alias entity-alias="PTYPCM" name="thruDate" />
+        <alias entity-alias="PTYCM" name="contactMechTypeId" />
+        <alias entity-alias="PTYCM" name="infoString" />
+        <alias entity-alias="PA" name="toName" />
+        <alias entity-alias="PA" name="attnName" />
+        <alias entity-alias="PA" name="address1" />
+        <alias entity-alias="PA" name="address2" />
+        <alias entity-alias="PA" name="city" />
+        <alias entity-alias="PA" name="postalCode" />
+        <alias entity-alias="TN" name="countryCode" />
+        <alias entity-alias="TN" name="areaCode" />
+        <alias entity-alias="TN" name="contactNumber" />
+
+        <view-link entity-alias="PTY" rel-entity-alias="PER" rel-optional="true">
+            <key-map field-name="partyId" />
+        </view-link>
+        <view-link entity-alias="PTY" rel-entity-alias="PTYROLE" rel-optional="true">
+            <key-map field-name="partyId" />
+        </view-link>
+        <view-link entity-alias="PTY" rel-entity-alias="PTYPCM" rel-optional="true">
+            <key-map field-name="partyId" />
+        </view-link>
+        <view-link entity-alias="PTYPCM" rel-entity-alias="PTYCM" rel-optional="true">
+            <key-map field-name="contactMechId" />
+        </view-link>
+        <view-link entity-alias="PTYPCM" rel-entity-alias="PCP" rel-optional="true">
+            <key-map field-name="contactMechId" />
+        </view-link>
+        <view-link entity-alias="PTYCM" rel-entity-alias="PA" rel-optional="true">
+            <key-map field-name="contactMechId" />
+        </view-link>
+        <view-link entity-alias="PTYCM" rel-entity-alias="TN" rel-optional="true">
+            <key-map field-name="contactMechId" />
+        </view-link>
+
+        <entity-condition>
+            <condition-list combine="and">
+                <condition-expr entity-alias="PTYROLE" field-name="roleTypeId" value="CUSTOMER" />
+                <condition-expr entity-alias="PCP" field-name="contactMechPurposeTypeId"
+                    value="PRIMARY_EMAIL" />
+            </condition-list>
+        </entity-condition>
+    </view-entity>
+</entitymodel>
