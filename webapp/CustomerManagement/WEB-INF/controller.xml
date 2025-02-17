@@ -52,10 +52,19 @@ under the License.
         <response name="success" type="view" value="screenrender" />
     </request-map>
 
+    <request-map uri="CreateCustomer">
+        <security https="true" auth="true" />
+        <event type="service" invoke="createCustomer" />
+        <response name="success" type="view" value="main" />
+    </request-map>
+
     <!-- View Mappings -->
     <view-map name="main" type="screen"
         page="component://CustomerManagement/widget/CustomerManagementScreens.xml#main" />
 
     <view-map name="screenrender" type="screen"
         page="component://CustomerManagement/widget/CustomerManagementScreens.xml#Datascreen" />
+
+    <view-map name="createCustomer" type="screen"
+        page="component://CustomerManagement/widget/CustomerManagementScreens.xml#CreateCustomer" />
 </site-conf>

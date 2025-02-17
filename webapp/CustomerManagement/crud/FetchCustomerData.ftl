@@ -1,4 +1,4 @@
-<form method="post" action="<@ofbizUrl>FindDynamicCustomer</@ofbizUrl>" name="AddCustomer" class="form-horizontal">
+<form method="post" action="<@ofbizUrl>FindDynamicCustomer</@ofbizUrl>" name="Find Customer" class="form-horizontal">
 
     <div class="control-group">
         <label class="control-label" for="partyId">Party Id</label>
@@ -65,7 +65,7 @@
 
     <div class="control-group">
         <div class="controls">
-            <button type="submit" class="btn">${uiLabelMap.CommonAdd}</button>
+            <button type="submit" class="btn">Find</button>
         </div>
     </div>
 

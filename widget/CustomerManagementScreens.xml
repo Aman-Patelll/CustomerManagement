@@ -31,7 +31,7 @@ under the License.
             <widgets>
                 <decorator-screen name="CustomerManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <screenlet title="Add Customer">
+                        <screenlet title="Find Customer">
                             <platform-specific>
                                 <html><html-template location="component://CustomerManagement/webapp/CustomerManagement/crud/FetchCustomerData.ftl"/></html>
                             </platform-specific>
@@ -45,13 +45,35 @@ under the License.
     <screen name="Datascreen">
         <section>
             <widgets>
-                <screenlet title="Fetched Customer Data">
-                    <platform-specific>
-                        <html>
-                            <html-template location="component://CustomerManagement/webapp/CustomerManagement/crud/DisplayCustomerData.ftl"/>
-                        </html>
-                    </platform-specific>
-                </screenlet>
+                <decorator-screen name="CustomerManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Fetched Customer Data">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://CustomerManagement/webapp/CustomerManagement/crud/DisplayCustomerData.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CreateCustomer">
+        <section>
+            <widgets>
+            <decorator-screen name="CustomerManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Create Customer">
+                            <platform-specific>
+                                <html>
+                                    <html-template location="component://CustomerManagement/webapp/CustomerManagement/crud/CreateCustomer.ftl"/>
+                                </html>
+                            </platform-specific>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
             </widgets>
         </section>
     </screen>
